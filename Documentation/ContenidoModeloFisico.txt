@@ -1,0 +1,100 @@
+DEFINICION DE TABLAS Y COLUMNAS
+  ALERGIAS
+    id_alergia          NUMBER          PK
+    nombre              NVARCHAR2(25)
+    descripcion         NVARCHAR2(40)
+
+  PROVINCIAS
+    id_provincia        NUMBER          PK
+    nombre              NVARCHAR2(40)
+    id_departamento     NUMBER          FK
+
+  DEPARTAMENTOS
+    id_departamento     NUMBER          PK
+    nombre              NVARCHAR2(20)
+
+  DISTRITOS
+    id_distrito         NUMBER          PK
+    nombre              NVARCHAR2(40)
+    id_provincia        NUMBER          FK
+
+  SEDES
+    id_sede             NUMBER           PK
+    nombre              NVARCHAR2(50)
+    direccion           NVARCHAR2(50)
+    telefono            NUMBER(9)
+    id_distrito         NUMBER           FK
+
+  PACIENTES_ALERGIAS
+    id_paciente         NUMBER           PK,FK
+    id_alergia          NUMBER           PK,FK
+
+  ESPECIALIDADES
+    id_especialidad     NUMBER           PK
+    nombre              NVARCHAR2(20)    U
+    descripcion         NVARCHAR2(60)
+
+  GRUPOS_SANGUINEOS
+    id_grupo_sanguineo  NUMBER           PK
+    nombre              NVARCHAR2(20)    U
+
+  PACIENTES
+    id_paciente         NUMBER           PK
+    nombres             NVARCHAR2(60)
+    apellido_parterno   NVARCHAR2(20)
+    apellido_marterno   NVARCHAR2(20)
+    doc_identidad       NVARCHAR2(20)
+    fecha_nacimiento    DATE
+    sexo                NUMBER
+    direccion           NVARCHAR(40)
+    telefono            NUMBER(9)
+    correo              NVARCHAR(50)
+    id_grupo_sanguineo  NUMBER           FK
+    id_distrito         NUMBER           FK
+  MEDICOS
+    id_medico           NUMBER
+    nombres             NVARCHAR2(60)
+    apellido_parterno   NVARCHAR2(20)
+    apellido_marterno   NVARCHAR2(20)
+    colegiatura         NUMBER           U
+    telefono            NUMBER(9)
+    correo              NVARCHAR(50)     U
+    id_especialidad     NUMBER           FK
+    id_sede             NUMBER           FK
+  DISPONIBILIDAD
+    id_disponibilidad   NUMBER           PK
+    id_doctor           NUMBER           FK
+    dia_semana          NVARCHAR2(10)
+    hora_inicio         TIMESTAMP
+    hora_fin            TIMESTAMP
+  HORARIOS
+    id_horario          NUMBER           PK
+    id_disponibilidad   NUMBER           FK
+    fecha               DATE
+    cupo_maximo         NUMBER
+  HISTORIAL
+    
+    fecha               DATE
+    diagnostico         NVARCHAR2(120)
+    observaciones       NVARCHAR2(120)
+  CITAS
+    id_cita             NUMBER           PK
+    id_paciente         NUMBER           FK
+    id_doctor           NUMBER           FK
+    fecha               DATE
+    hora                TIMESTAMP
+    id_estado           NUMBER           FK
+  ESTADO_CITAS
+    id_estado           NUMBER           PK
+    nombre              NVARCHAR(15)
+INDICES
+
+
+*Restricciones
+ -MedicoNoDisponible
+ -ColegiaturaMedicoRepetida
+ -EmailPacienteRepetido
+ -CupoHorarioLleno
+
+*Funciones/Procedimientos/Triggers
+--Funciones CRUD (Paciente, Cita, Medico, etc)
