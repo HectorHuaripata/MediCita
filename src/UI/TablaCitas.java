@@ -11,25 +11,25 @@ import medicita.DataAccess;
  *
  * @author Hector
  */
-public class TablaMedicos extends javax.swing.JFrame {
+public class TablaCitas extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TablaMedicos.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TablaCitas.class.getName());
     private DataAccess data;
     /**
-     * Creates new form TablaMedicos
+     * Creates new form TablaPacientes
      */
-    public TablaMedicos() {
+    public TablaCitas() {
         initComponents();
         data = new DataAccess();
         DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
-        data.listarMedicos(tblModel);
+        data.listarCitas(tblModel);
     }
     
-    public TablaMedicos(DataAccess da) {
+    public TablaCitas(DataAccess da) {
         initComponents();
         data = da;
         DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
-        data.listarMedicos(tblModel);
+        data.listarCitas(tblModel);
     }
 
     /**
@@ -62,14 +62,14 @@ public class TablaMedicos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Nombres", "Ap. Paterno", "Ap. Materno", "Colegiatura", "Telefono", "Correo", "Especialidad", "Sede"
+                "Id", "Estado", "Fecha", "Hora", "Diagnostico", "Observaciones"
             }
         ));
         jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Médicos");
+        jLabel1.setText("Pacientes");
 
         jButton1.setText("Registrar");
         jButton1.addActionListener(this::jButton1ActionPerformed);
