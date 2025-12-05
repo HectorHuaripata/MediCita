@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="DataDesign 2.0 MediCita" id="E9FA76EA-1DC8-AE67-0D17-21ACB43F5BC5" version="3.5">
+<createdBy>Hector</createdBy>
+<createdTime>2025-12-04 04:32:50 UTC</createdTime>
+<ownerDesignName>DataDesign 2.0 MediCita</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>E9FA76EA-1DC8-AE67-0D17-21ACB43F5BC5</designId>
+</OSDM_Design>
